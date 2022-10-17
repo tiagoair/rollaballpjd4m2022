@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a4087bdb760475da3dad16e5f4871d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinsToWin: 3
+  timeToLose: 10
   guiName: GUI
-  levelName: Prototype
-  playerAndCameraPrefab: {fileID: 1539597530652412086, guid: a31066dabb7134b0aa1986670aeee002, type: 3}
+  levelName: 2DLevel
+  playerAndCameraPrefab: {fileID: 5596212795301695938, guid: 8a3f62de847e245278c14238b28f640c, type: 3}
