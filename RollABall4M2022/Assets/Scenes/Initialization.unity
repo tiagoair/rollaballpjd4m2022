@@ -150,6 +150,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -169,5 +170,5 @@ MonoBehaviour:
   coinsToWin: 3
   timeToLose: 10
   guiName: GUI
-  levelName: 2DLevel
-  playerAndCameraPrefab: {fileID: 5596212795301695938, guid: 8a3f62de847e245278c14238b28f640c, type: 3}
+  levelName: Prototype
+  playerAndCameraPrefab: {fileID: 1539597530652412086, guid: a31066dabb7134b0aa1986670aeee002, type: 3}
