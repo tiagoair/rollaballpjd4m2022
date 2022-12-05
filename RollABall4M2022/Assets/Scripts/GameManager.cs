@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityTemplateProjects;
 
 /// <summary>
 /// Estados do Game Manager
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance; // instancia do singleton
 
+    public GameMode gameMode;
+    
     public GameState GameState
     {
         get => _gameState;
@@ -51,11 +54,13 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         PlayerObserverManager.OnCoinsChanged += PlayerCoinsUpdate;
+        gameMode.OnGameModeStateChanged += HandleGameMode;
     }
 
     private void OnDisable()
     {
         PlayerObserverManager.OnCoinsChanged -= PlayerCoinsUpdate;
+        if(gameMode!=null) gameMode.OnGameModeStateChanged -= HandleGameMode;
     }
 
     private void Awake()
@@ -165,7 +170,8 @@ public class GameManager : MonoBehaviour
     
     private void PlayerCoinsUpdate(int obj)
     {
-        if (obj >= coinsToWin) GameState = GameState.Victory;
+        //if (obj >= coinsToWin) GameState = GameState.Victory;
+        gameMode.UpdateGameMode(obj);
     }
 
     private void OnGameStateChanged()
@@ -194,18 +200,19 @@ public class GameManager : MonoBehaviour
 
     private void ResetTimer()
     {
-        _currentTime = timeToLose;
+        _currentTime = 0;
     }
 
     private void Update()
     {
         if (GameState == GameState.Running)
         {
-            _currentTime -= Time.deltaTime;
-            if (_currentTime <= 0)
+            _currentTime += Time.deltaTime;
+            gameMode.UpdateGameMode(0,_currentTime);
+            /*if (_currentTime <= 0)
             {
                 GameState = GameState.GameOver;
-            }
+            }*/
         }
 
         if (GameState == GameState.Victory)
@@ -230,5 +237,15 @@ public class GameManager : MonoBehaviour
     private void LoadGameOverScene()
     {
         SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
+    }
+    
+    private void HandleGameMode(GameState obj)
+    {
+        GameState = obj;
+    }
+
+    public void ReachedVictoryFlag()
+    {
+        gameMode.UpdateGameMode(0,0,true);
     }
 }

@@ -208,5 +208,10 @@ public class PlayerController : MonoBehaviour
             // Destrua o objeto da coin
             Destroy(other.gameObject);
         }
+
+        if (other.CompareTag("Victory"))
+        {
+            GameManager.Instance.ReachedVictoryFlag();
+        }
     }
 } //NAO ESCREVA DEPOIS DESSA ULTIMA CHAVE Ò.Ó

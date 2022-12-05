@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a4087bdb760475da3dad16e5f4871d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameMode: {fileID: 11400000, guid: 2dc9c2efb40ee4c4fa3eb7a1b0ba96a2, type: 2}
   coinsToWin: 3
   timeToLose: 10
   guiName: GUI
