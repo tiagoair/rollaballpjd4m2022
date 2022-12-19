@@ -19,4 +19,11 @@ public static class PlayerObserverManager
         // caso tenha, mande o value para todos
         OnCoinsChanged?.Invoke(value);
     }
+
+    public static Action<int> OnHealthChanged;
+
+    public static void HealthChanged(int health)
+    {
+        OnHealthChanged?.Invoke(health);
+    }
 }

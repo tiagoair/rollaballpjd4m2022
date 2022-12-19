@@ -1,12 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public int maxHealth = 100;
+
+    private int _currentHealth;
+
+    public float damageForceDivider = 1;
+    
     // Numero de moedas coletadas
     public int coins = 0;
     
@@ -40,6 +47,9 @@ public class PlayerController : MonoBehaviour
     // Serve para inicializarmos o objeto do jogador
     private void OnEnable()
     {
+        _currentHealth = maxHealth;
+        PlayerObserverManager.HealthChanged(_currentHealth);
+        
         // Associa à variável, o componente Rigidbody presente no objeto do jogador na Unity
         _rigidbody = GetComponent<Rigidbody>();
         
@@ -212,6 +222,23 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Victory"))
         {
             GameManager.Instance.ReachedVictoryFlag();
+        }
+    }
+
+    public void ChangeHealth(int health, [Optional] bool withForce, [Optional] Vector3 forceDirection)
+    {
+        _currentHealth += health;
+        /*
+        if (_currentHealth > maxHealth) _currentHealth = maxHealth;
+        if (_currentHealth < 0) _currentHealth = 0;
+        */
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, maxHealth);
+        
+        PlayerObserverManager.HealthChanged(_currentHealth);
+
+        if (withForce)
+        {
+            _rigidbody.AddForce(forceDirection * Mathf.Abs(health)/damageForceDivider, ForceMode.Impulse);
         }
     }
 } //NAO ESCREVA DEPOIS DESSA ULTIMA CHAVE Ò.Ó
