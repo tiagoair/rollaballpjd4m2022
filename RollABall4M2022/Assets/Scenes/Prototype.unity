@@ -1133,6 +1133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d58de4dd1f34b05a90f6d7407c0f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myPatrolRoute: {fileID: 1325941815}
   myEnemyData: {fileID: 11400000, guid: 140bd368248ab427486c84e716e5eec2, type: 2}
   distanceToFollow: 0
   distanceToAttack: 0
