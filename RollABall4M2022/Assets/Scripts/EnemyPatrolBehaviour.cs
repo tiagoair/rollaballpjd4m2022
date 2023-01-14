@@ -10,16 +10,22 @@ public class EnemyPatrolBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _myEnemyController = animator.gameObject.GetComponent<EnemyController>();
-        
+        _myEnemyController.SetDestinationToPatrolRoute();
         _myEnemyController.SetDistance(_myEnemyController.distanceToFollow);
-        
-        Debug.Log(_myEnemyController.name + " entrou no estado Patrol.");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        _myEnemyController.CheckPatrolPointDistance();
+        float distance = _myEnemyController._enemyFSM.GetFloat("Distance");
+
+        if (distance <= 0.5f)
+        {
+            _myEnemyController.UpdatePatrolPoint();
+            _myEnemyController.SetDestinationToPatrolRoute();
+        }
+        Debug.Log(_myEnemyController.name + " entrou no estado Patrol.");
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

@@ -10,7 +10,11 @@ public class PlayerController : MonoBehaviour
 {
     public int maxHealth = 100;
 
+<<<<<<< HEAD
     private int _currentHealth;
+=======
+    public int _currentHealth;
+>>>>>>> 5881a230993fc023e62fdd753b5ce76553509068
 
     public float damageForceDivider = 1;
     
@@ -228,17 +232,25 @@ public class PlayerController : MonoBehaviour
     public void ChangeHealth(int health, [Optional] bool withForce, [Optional] Vector3 forceDirection)
     {
         _currentHealth += health;
+<<<<<<< HEAD
         /*
         if (_currentHealth > maxHealth) _currentHealth = maxHealth;
         if (_currentHealth < 0) _currentHealth = 0;
         */
+=======
+
+>>>>>>> 5881a230993fc023e62fdd753b5ce76553509068
         _currentHealth = Mathf.Clamp(_currentHealth, 0, maxHealth);
         
         PlayerObserverManager.HealthChanged(_currentHealth);
 
         if (withForce)
         {
+<<<<<<< HEAD
             _rigidbody.AddForce(forceDirection * Mathf.Abs(health)/damageForceDivider, ForceMode.Impulse);
+=======
+            _rigidbody.AddForce(forceDirection * Mathf.Abs(health), ForceMode.Impulse);
+>>>>>>> 5881a230993fc023e62fdd753b5ce76553509068
         }
     }
 } //NAO ESCREVA DEPOIS DESSA ULTIMA CHAVE Ò.Ó

@@ -98,7 +98,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2915929145620363059
 Rigidbody:
@@ -159,6 +159,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+<<<<<<< HEAD
+=======
+  _currentHealth: 0
+>>>>>>> 5881a230993fc023e62fdd753b5ce76553509068
   damageForceDivider: 3
   coins: 0
   moveMultiplier: 1000

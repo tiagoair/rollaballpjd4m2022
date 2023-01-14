@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 6e8f541b85db4db48a1c8e4fb6f3cec0, type: 3}
+=======
+  m_Script: {fileID: 11500000, guid: 90e3a3d258bb4dbd9658ef62c2cae0e3, type: 3}
+>>>>>>> 5881a230993fc023e62fdd753b5ce76553509068
   m_Name: EnemyData
   m_EditorClassIdentifier: 
   name: Enemego

@@ -14,7 +14,11 @@ public class SpikeController : MonoBehaviour
             Vector3 direction = collision.transform.position - transform.position;
             direction = direction.normalized;
             
+<<<<<<< HEAD
             collision.gameObject.GetComponent<PlayerController>().ChangeHealth(-damage, true, direction);
+=======
+            collision.gameObject.GetComponent<PlayerController>().ChangeHealth(-damage, withForce: true, direction);
+>>>>>>> 5881a230993fc023e62fdd753b5ce76553509068
         }
     }
 }
